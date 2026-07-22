@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id" style="color-scheme:light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berapa lama aku sudah hidup?</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Berapa lama aku sudah hidup?</h1>
+  <p class="subtitle">Setiap detik adalah anugerah</p>
+
+  <div class="input-section" id="inputSection">
+    <label for="birthdate">Tanggal Lahir</label>
+    <div class="date-picker-wrap">
+      <button class="year-btn" onclick="adjYear(-10)" title="-10 tahun">&#139;&#139;</button>
+      <button class="year-btn" onclick="adjYear(-1)" title="-1 tahun">&#139;</button>
+      <input type="date" id="birthdate">
+      <button class="year-btn" onclick="adjYear(1)" title="+1 tahun">&#155;</button>
+      <button class="year-btn" onclick="adjYear(10)" title="+10 tahun">&#155;&#155;</button>
+    </div>
+
+    <div class="time-toggle">
+      <input type="checkbox" id="timeCheck" onchange="toggleTime()">
+      <label for="timeCheck">Sertakan jam lahir</label>
+    </div>
+
+    <div class="time-inputs" id="timeInputs">
+      <input type="number" id="birthHour" min="0" max="23" placeholder="Jam">
+      <span>:</span>
+      <input type="number" id="birthMin" min="0" max="59" placeholder="Menit">
+    </div>
+
+    <button class="btn" onclick="mulai()">Mulai</button>
+  </div>
+
+  <div class="result" id="resultSection" style="display:none">
+    <div class="result-top">
+      <button class="back-btn" onclick="kembali()" title="Kembali ke input" aria-label="Kembali">
+        <svg class="back-svg" viewBox="0 0 40 40">
+          <rect x="2" y="2" width="36" height="36" rx="8" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="20 110"/>
+        </svg>
+        &#8592;
+      </button>
+    </div>
+    <div class="skeleton" id="skeleton">
+      <div class="sk-grid">
+        <div class="sk-card"></div>
+        <div class="sk-card"></div>
+        <div class="sk-card"></div>
+        <div class="sk-card"></div>
+        <div class="sk-card"></div>
+        <div class="sk-card"></div>
+      </div>
+      <div class="sk-bar"></div>
+      <div class="sk-stat">
+        <div class="sk-stat-item"></div>
+        <div class="sk-stat-item"></div>
+        <div class="sk-stat-item"></div>
+        <div class="sk-stat-item"></div>
+        <div class="sk-stat-item"></div>
+      </div>
+    </div>
+    <div class="time-grid" id="realtimeGrid"></div>
+
+    <div class="lazy-section">
+      <div class="bar-wrap">
+        <div class="bar-label">
+          <span>Progress tahun ini</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lazy-section">
+      <div class="stat-section">
+        <div class="stat-title">Total Hidup</div>
+        <div class="stat-grid" id="statGrid"></div>
+      </div>
+    </div>
+
+    <div class="lazy-section">
+      <div class="bio-section">
+        <div class="stat-title">Identitas Kelahiran</div>
+        <div class="bio-grid" id="bioGrid"></div>
+      </div>
+    </div>
+
+    <div class="lazy-section">
+      <div class="countdown-wrap" id="countdownWrap">
+        <div class="countdown-title">Hitung Mundur Ulang Tahun</div>
+        <div class="countdown-grid" id="countdownGrid"></div>
+      </div>
+
+      <div class="birth-info" id="birthInfo"></div>
+    </div>
+
+    <div class="lazy-section">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 120 120">
+          <circle class="donut-bg" cx="60" cy="60" r="52" transform="rotate(-90, 60, 60)"/>
+          <circle class="donut-fill" id="donutFill" cx="60" cy="60" r="52" transform="rotate(-90, 60, 60)"/>
+          <text class="donut-pct" x="60" y="57" id="donutPct">0%</text>
+          <text class="donut-lbl" x="60" y="72">Progress Hidup</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="lazy-section">
+      <div class="chart-wrap">
+        <div class="stat-title">Perjalanan Hidup</div>
+        <div class="tl-root" id="tlRoot">
+          <div class="tl-ptr" id="tlPtr">
+            <span class="tl-ptr-age" id="tlAge">0</span>
+            <span class="tl-ptr-dot"></span>
+          </div>
+          <div class="tl-bar-wrap">
+            <div class="tl-fill" id="tlFill"></div>
+          </div>
+          <div class="tl-labels" id="tlLabels"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lazy-section">
+      <div class="ms-section">
+        <div class="stat-title">Milestones Khusus</div>
+        <div class="ms-grid" id="msGrid"></div>
+        <div class="ms-summary">
+          <div class="ms-summary-card">
+            <div class="ms-summary-text" id="msSummaryText"></div>
+          </div>
+          <button class="btn-ms-copy" onclick="salinRingkasan()" title="Salin ringkasan">Salin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
